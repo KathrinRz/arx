@@ -86,7 +86,9 @@ public class ConfigSplitAndReplaceStringMasker {
 	private void checkInt() {
 		okReplaceGroup = RegEx.regExInt(txtReplaceGroup.getText());
 	}
-
+	/**
+	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+	 */
 	private void checkOK() {
 		if (okReplaceGroup) {
 			btn1.setText("OK");

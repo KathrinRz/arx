@@ -86,11 +86,15 @@ public class ConfigRandomShiftDecimalMasker {
 		checkContinousDistribution();
 		checkOK();
 	}
-
+	/**
+	 * Methode, die Eingabe für Distribution auf Gültigkeit überprüft
+	 */
 	private void checkContinousDistribution() {
 		okContinousDistribution = cont1.getOK();
 	}
-
+	/**
+	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+	 */
 	private void checkOK() {
 		if (okShiftConstant && okContinousDistribution) {
 			btn1.setText("OK");
@@ -100,7 +104,9 @@ public class ConfigRandomShiftDecimalMasker {
 			btn1.setEnabled(false);
 		}
 	}
-
+	/**
+	 * Methode, die Eingabe für ShiftConstant auf Gültigkeit überprüft
+	 */
 	private void checkShiftConstant() {
 		okShiftConstant = RegEx.regExDouble(txtShiftConstant.getText());
 		if(okShiftConstant){

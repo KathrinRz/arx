@@ -96,7 +96,9 @@ public class ConfigGenerateRandomStringMasker {
 		btn1.setLayoutData(gridData);
 		
 	}
-
+	/**
+	 * Methode, die Eingabe für Int auf Gültigkeit überprüft
+	 */
 	private void checkInt() {
 		okInt = RegEx.regExInt(txtInt.getText());
 		if(okInt){
@@ -105,7 +107,9 @@ public class ConfigGenerateRandomStringMasker {
 			txtInt.setForeground(txtInt.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
-
+	/**
+	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+	 */
 	private void checkOK() {
 		if (okInt) {
 			btn1.setText("OK");

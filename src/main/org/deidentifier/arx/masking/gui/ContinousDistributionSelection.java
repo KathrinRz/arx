@@ -272,7 +272,7 @@ public class ContinousDistributionSelection extends Composite {
 		});
 
 	}
-
+	
 	public void addModifyListener(ModifyListener modifyListener) {
 
 		cmb3.addModifyListener(modifyListener);

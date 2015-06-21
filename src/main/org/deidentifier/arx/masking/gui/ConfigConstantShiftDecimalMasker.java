@@ -63,7 +63,9 @@ public class ConfigConstantShiftDecimalMasker {
 		gridData.horizontalSpan = 2;
 		btn1.setLayoutData(gridData);
 	}
-
+	/**
+	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+	 */
 	private void checkOK() {
 		if (okShiftDistance) {
 			btn1.setText("OK");
@@ -73,7 +75,9 @@ public class ConfigConstantShiftDecimalMasker {
 			btn1.setEnabled(false);
 		}
 	}
-
+	/**
+	 * Methode, die Eingabe für ShiftDistance auf Gültigkeit überprüft
+	 */
 	private void checkShiftDistance() {
 		okShiftDistance = RegEx.regExDouble(txtShiftDistance.getText());
 		if(okShiftDistance){

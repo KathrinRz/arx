@@ -111,6 +111,9 @@ public class ConfigGenerateRandomDataMasker {
 		checkOK();
 	}
 
+	/**
+	 * Methode, die Eingabe für DateTime auf Gültigkeit überprüft
+	 */
 	private void checkDateTime() {
 		okDateTime = RegEx.regExDate(txtDateTime.getText());
 		if(okDateTime){
@@ -119,11 +122,15 @@ public class ConfigGenerateRandomDataMasker {
 			txtDateTime.setForeground(txtDateTime.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
-
+	/**
+	 * Methode, die Eingabe für Distribution auf Gültigkeit überprüft
+	 */
 	private void checkDiscreteDistribution() {
 		okDiscreteDistribution = disc1.getOK();
 	}
-
+	/**
+	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+	 */
 	private void checkOK() {
 		if (okShiftConstant && okDateTime && okPeriod && okDiscreteDistribution) {
 			btn1.setText("OK");
@@ -134,7 +141,9 @@ public class ConfigGenerateRandomDataMasker {
 		}
 
 	}
-
+	/**
+	 * Methode, die Eingabe für Period auf Gültigkeit überprüft
+	 */
 	private void checkPeriod() {
 		okPeriod = RegEx.regExPeriod(txtPeriod.getText());
 		if(okPeriod){
@@ -143,7 +152,9 @@ public class ConfigGenerateRandomDataMasker {
 			txtPeriod.setForeground(txtPeriod.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
-
+	/**
+	 * Methode, die Eingabe für ShiftConstant auf Gültigkeit überprüft
+	 */
 	private void checkShiftConstant() {
 		okShiftConstant = RegEx.regExInt(txtShiftConstant.getText());
 		if(okShiftConstant){

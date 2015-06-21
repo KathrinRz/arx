@@ -31,7 +31,7 @@ public class ConfigConstantShiftDateMasker {
 	 * @param x
 	 * @param y
 	 */
-	public ConfigConstantShiftDateMasker(Shell s,int x, int y) {
+	public ConfigConstantShiftDateMasker(Shell s, int x, int y) {
 		group = new Group(s, SWT.SHADOW_IN | SWT.H_SCROLL | SWT.V_SCROLL);
 		group.setText("ConfigConstantShiftDateMasker");
 		GridLayout gridLayout = new GridLayout(2, true);
@@ -64,7 +64,9 @@ public class ConfigConstantShiftDateMasker {
 		checkShiftPeriod();
 
 	}
-
+/**
+ * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
+ */
 	private void checkOK() {
 		if (okShiftPeriod) {
 			btn1.setText("OK");
@@ -74,13 +76,17 @@ public class ConfigConstantShiftDateMasker {
 			btn1.setEnabled(false);
 		}
 	}
-
+/**
+ * Methode, die Eingabe ShiftPeriod auf Gültigkeit überprüft
+ */
 	private void checkShiftPeriod() {
 		okShiftPeriod = RegEx.regExPeriod(txtShiftPeriod.getText());
-		if(okShiftPeriod){
-			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		}else{
-			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay().getSystemColor(SWT.COLOR_RED));
+		if (okShiftPeriod) {
+			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay()
+					.getSystemColor(SWT.COLOR_BLACK));
+		} else {
+			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay()
+					.getSystemColor(SWT.COLOR_RED));
 		}
 	}
 
