@@ -19,7 +19,8 @@ public class ConfigReplaceInstMasker {
 	private Group group;
 	private Label lblReplacementValue;
 	private Text txtReplacementValue;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 
 	/**
 	 * Methode, die ein Coposite erzeugt, in dem ein Textfeld erstellt wird
@@ -48,11 +49,15 @@ public class ConfigReplaceInstMasker {
 		setLabelText(lblReplacementValue, txtReplacementValue,
 				"Replacement value:", "0", 5);
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
 		
 	}
 

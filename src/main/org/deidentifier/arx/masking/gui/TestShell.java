@@ -1,15 +1,8 @@
-import java.awt.ScrollPane;
-
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.ScrolledComposite;
-import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
@@ -26,28 +19,19 @@ public class TestShell {
 
 	TestShell() {
 		Display d = new Display();
-		final Shell s = new Shell(d,SWT.SHELL_TRIM|SWT.H_SCROLL|SWT.V_SCROLL);
+		final Shell s = new Shell(d);
 		s.setText("Das ist eine neue Shell");
-		
-		s.addListener(SWT.RESIZE, new Listener(){
-			public void handleEvent (Event e){
-				 Rectangle rect = s.getClientArea ();
-			      System.out.println(rect);
-			    }
-			  });
 		
 		GridLayout gridLayout = new GridLayout(5,true);
 		gridLayout.makeColumnsEqualWidth = true;
 		gridLayout.horizontalSpacing=10;
 		gridLayout.verticalSpacing=10;
 		s.setLayout(gridLayout);
-		GridData gridData = new GridData(SWT.H_SCROLL,SWT.V_SCROLL,true,true);
+		GridData gridData = new GridData();
 		s.setLayoutData(gridData);
-		//s.computeSize(SWT.MAX,SWT.MAX);
-		s.setSize(1000,1000);
-	
-//		Composite c = new Composite(s,SWT.SHADOW_IN|SWT.V_SCROLL|SWT.H_SCROLL);
-//		c.setLayout(gridLayout);
+		s.computeSize(SWT.MAX,SWT.MAX);
+		
+
 		
 		ConfigConstantShiftDateMasker g1 = new ConfigConstantShiftDateMasker(s,400,50);
 

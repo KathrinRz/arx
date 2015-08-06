@@ -20,7 +20,8 @@ public class ConfigRandomShiftDecimalMasker {
 
 	private boolean okShiftConstant = false;
 	private boolean okContinousDistribution = false;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 	private ContinousDistributionSelection cont1;
 	private Group group;
 	private Label lblShiftConstant;
@@ -76,37 +77,35 @@ public class ConfigRandomShiftDecimalMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
 
 		checkShiftConstant();
 		checkContinousDistribution();
 		checkOK();
 	}
-	/**
-	 * Methode, die Eingabe für Distribution auf Gültigkeit überprüft
-	 */
+
 	private void checkContinousDistribution() {
 		okContinousDistribution = cont1.getOK();
 	}
-	/**
-	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
-	 */
+
 	private void checkOK() {
 		if (okShiftConstant && okContinousDistribution) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
-	/**
-	 * Methode, die Eingabe für ShiftConstant auf Gültigkeit überprüft
-	 */
+
 	private void checkShiftConstant() {
 		okShiftConstant = RegEx.regExDouble(txtShiftConstant.getText());
 		if(okShiftConstant){

@@ -1,6 +1,4 @@
 import org.eclipse.swt.SWT;
-//import org.eclipse.swt.events.KeyEvent;
-//import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
@@ -21,7 +19,8 @@ public class ConfigGenerateRandomDecimalMasker {
 
 	private boolean okShiftConstant = false;
 	private boolean okContinousDistribution = false;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 	private ContinousDistributionSelection cont1;
 	private Group group;
 	private Label lblShiftConstant;
@@ -75,51 +74,53 @@ public class ConfigGenerateRandomDecimalMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button(group, SWT.PUSH);
+		btnCancel.setText("Cancel");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
-		
+
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
+		gridData = new GridData(GridData.FILL, GridData.END, true, true);
+		btnOK.setLayoutData(gridData);
+
 		checkShiftConstant();
 		checkContinousDistribution();
 		checkOK();
 	}
-	/**
-	 * Methode, die Eingabe für Distribution auf Gültigkeit überprüft
-	 */
+
 	private void checkContinousDistribution() {
 		okContinousDistribution = cont1.getOK();
-		if(okContinousDistribution){
-			cont1.setForeground(cont1.getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		}else{
-			cont1.setForeground(cont1.getDisplay().getSystemColor(SWT.COLOR_RED));
+		if (okContinousDistribution) {
+			cont1.setForeground(cont1.getDisplay().getSystemColor(
+					SWT.COLOR_BLACK));
+		} else {
+			cont1.setForeground(cont1.getDisplay()
+					.getSystemColor(SWT.COLOR_RED));
 		}
 	}
-	/**
-	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
-	 */
+
 	private void checkOK() {
 		if (okShiftConstant && okContinousDistribution) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
-	/**
-	 * Methode, die Eingabe für ShiftConstant auf Gültigkeit überprüft
-	 */
+
 	private void checkShiftConstant() {
 		okShiftConstant = RegEx.regExDouble(txtShiftConstant.getText());
-		if(okShiftConstant){
-			txtShiftConstant.setForeground(txtShiftConstant.getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		}else{
-			txtShiftConstant.setForeground(txtShiftConstant.getDisplay().getSystemColor(SWT.COLOR_RED));
+		if (okShiftConstant) {
+			txtShiftConstant.setForeground(txtShiftConstant.getDisplay()
+					.getSystemColor(SWT.COLOR_BLACK));
+		} else {
+			txtShiftConstant.setForeground(txtShiftConstant.getDisplay()
+					.getSystemColor(SWT.COLOR_RED));
 		}
 	}
-	
+
 	/**
 	 * Methode, die Labels + Textfelder für verschiedene Parameter erstellt. Mit
 	 * int typ wird angegeben, ob Int, Double,Date,Period oder ein String
@@ -139,7 +140,9 @@ public class ConfigGenerateRandomDecimalMasker {
 	 * @param val1
 	 * @param typ
 	 */
-	
+	// public void getResult(){
+	// shiftConstant=Double.parseDouble(txtShiftConstant.getText());
+	// }
 	public void setLabelText(Label lbl1, final Text txt1, String lab1,
 			String val1, int typ) {
 		GridData gridData = new GridData();
@@ -150,7 +153,7 @@ public class ConfigGenerateRandomDecimalMasker {
 		gridData.horizontalAlignment = SWT.FILL;
 		txt1.setLayoutData(gridData);
 		txt1.setText(val1);
-		
+
 		if (lab1 == "") {
 			lbl1.setVisible(false);
 			txt1.setVisible(false);

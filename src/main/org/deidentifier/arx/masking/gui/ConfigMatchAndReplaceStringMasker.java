@@ -22,7 +22,8 @@ public class ConfigMatchAndReplaceStringMasker {
 	private Label lblReplacingAllChars;
 	private Text txtRegExPattern;
 	private Text txtReplacementString;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 	private Button btnReplacingAllMatches;
 	private Button btnReplacingAllChars;
 
@@ -78,11 +79,15 @@ public class ConfigMatchAndReplaceStringMasker {
 		setLabelText(lblReplacementString, txtReplacementString,
 				"ReplacementString:", "*", 5);
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
 
 	}
 

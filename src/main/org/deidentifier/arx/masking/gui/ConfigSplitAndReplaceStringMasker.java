@@ -26,7 +26,8 @@ public class ConfigSplitAndReplaceStringMasker {
 	private Text txtSplitAtOccurrenceOf;
 	private Text txtReplacementString;
 	private Text txtReplaceGroup;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 	private Button btnReplaceEchChar;
 
 	/**
@@ -76,26 +77,28 @@ public class ConfigSplitAndReplaceStringMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
 	}
 
 	private void checkInt() {
-		okReplaceGroup = RegEx.regExInt(txtReplaceGroup.getText());
+		okReplaceGroup = RegEx.regExIntPos(txtReplaceGroup.getText());
 	}
-	/**
-	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
-	 */
+
 	private void checkOK() {
 		if (okReplaceGroup) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
 

@@ -165,8 +165,8 @@ public class RegEx {
 		}
 		if (anz > 1)
 			return false;
-		if ((s.equals(".")))
-			return false;
+//		if ((s.equals(".")))
+//			return false;
 		if (s.equals(""))
 			return false;
 		return true;
@@ -184,6 +184,10 @@ public class RegEx {
 			if ("-0123456789".indexOf(s.substring(i, i + 1)) == -1)
 				return false;
 		}
+		for(int i = 1; i<s.length();i++){
+			if("-".indexOf(s.substring(i,i+1))==0)
+				return false;
+		}
 		int anz = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.substring(i, i + 1).equals("-"))
@@ -191,6 +195,17 @@ public class RegEx {
 		}
 		if (anz > 1)
 			return false;
+
+		if (s.equals(""))
+			return false;
+		return true;
+	}
+	
+	public static boolean regExIntPos(String s) {
+		for (int i = 0; i < s.length(); i++) {
+			if ("0123456789".indexOf(s.substring(i, i + 1)) == -1)
+				return false;
+		}
 		if (s.equals(""))
 			return false;
 		return true;

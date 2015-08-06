@@ -1,6 +1,8 @@
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -18,10 +20,12 @@ import org.eclipse.swt.widgets.Text;
 public class ConfigConstantShiftDateMasker {
 
 	private boolean okShiftPeriod = false;
-	private Button btn1;
+	private Button btnOK;
+	private Button btnCancel;
 	private Group group;
 	private Label lblShiftPeriod;
 	private Text txtShiftPeriod;
+	private ResultConstantShiftDateMasker returnwert = new ResultConstantShiftDateMasker();
 
 	/**
 	 * Methode, die ein Coposite erzeugt, in dem ein Eigabefeld für ShiftPeriod
@@ -31,7 +35,7 @@ public class ConfigConstantShiftDateMasker {
 	 * @param x
 	 * @param y
 	 */
-	public ConfigConstantShiftDateMasker(Shell s, int x, int y) {
+	public ConfigConstantShiftDateMasker(Shell s,int x, int y) {
 		group = new Group(s, SWT.SHADOW_IN | SWT.H_SCROLL | SWT.V_SCROLL);
 		group.setText("ConfigConstantShiftDateMasker");
 		GridLayout gridLayout = new GridLayout(2, true);
@@ -56,37 +60,58 @@ public class ConfigConstantShiftDateMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.PUSH);
-		btn1.setText("OK");
+		
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnCancel.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				returnwert.setShiftPeriod(null);
+				getResult(null);
+//				System.out.println(returnwert.getShiftPeriod());
+			}
+		});
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
+		btnOK.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				returnwert.setShiftPeriod(txtShiftPeriod.getText());
+				getResult(returnwert.shiftPeriod);
+//				System.out.println(returnwert.getShiftPeriod());
+				
+			}
+		});
+		
+	
+		
 		checkShiftPeriod();
 
 	}
-/**
- * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
- */
+
+	private void getResult(String i){
+		System.out.println(i);
+	}
+	
 	private void checkOK() {
 		if (okShiftPeriod) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
-/**
- * Methode, die Eingabe ShiftPeriod auf Gültigkeit überprüft
- */
+
 	private void checkShiftPeriod() {
 		okShiftPeriod = RegEx.regExPeriod(txtShiftPeriod.getText());
-		if (okShiftPeriod) {
-			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay()
-					.getSystemColor(SWT.COLOR_BLACK));
-		} else {
-			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay()
-					.getSystemColor(SWT.COLOR_RED));
+		if(okShiftPeriod){
+			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay().getSystemColor(SWT.COLOR_BLACK));
+		}else{
+			txtShiftPeriod.setForeground(txtShiftPeriod.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
 

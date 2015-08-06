@@ -1,6 +1,8 @@
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -19,10 +21,13 @@ import org.eclipse.swt.widgets.Text;
 public class ConfigConstantShiftDecimalMasker {
 
 	private boolean okShiftDistance = false;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 	private Group group;
 	protected Label lblShiftDistance;
 	protected Text txtShiftDistance;
+	public double shiftDistance;
+	public ResultConstantShiftDecimalMasker returnwert = new ResultConstantShiftDecimalMasker();
 
 	/**
 	 * Methode, die ein Coposite erzeugt, in dem ein Eigabefeld für
@@ -40,8 +45,6 @@ public class ConfigConstantShiftDecimalMasker {
 		group.setLayout(gridLayout);
 		GridData gridData = new GridData(GridData.FILL, GridData.FILL, true,
 				true);
-		// gridData.horizontalSpan=5; //Bei 2 werden beide Columns mit dieser
-		// Composite ausgefüllt, nächste rutscht in nächste Reihe
 		group.setLayoutData(gridData);
 
 		lblShiftDistance = new Label(group, SWT.NONE);
@@ -57,27 +60,45 @@ public class ConfigConstantShiftDecimalMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnCancel.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				getResult(null);
+		}
+		});
+		
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
+		btnOK.addSelectionListener(new SelectionAdapter(){
+			public void widgetSelected(SelectionEvent e){
+				returnwert.setShiftDistance(Double.parseDouble((txtShiftDistance.getText())));
+				getResult(Double.toString(returnwert.getShiftDistance()));
+				//System.out.println(returnwert.getShiftDistance());
+				
+			}
+		});
+		
 	}
-	/**
-	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
-	 */
+	private void getResult(String i){
+		System.out.println(i);
+	}
+
 	private void checkOK() {
 		if (okShiftDistance) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
-	/**
-	 * Methode, die Eingabe für ShiftDistance auf Gültigkeit überprüft
-	 */
+
 	private void checkShiftDistance() {
 		okShiftDistance = RegEx.regExDouble(txtShiftDistance.getText());
 		if(okShiftDistance){
@@ -86,6 +107,7 @@ public class ConfigConstantShiftDecimalMasker {
 			txtShiftDistance.setForeground(txtShiftDistance.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
+	
 
 	/**
 	 * Methode, die Labels + Textfelder für verschiedene Parameter erstellt. Mit

@@ -108,169 +108,176 @@ public class ContinousDistributionSelection extends Composite {
 
 		this.cmb3.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				int j = cmb3.getSelectionIndex();
-				if (j == 0) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = 1;
-					setLabelText(lblParam1, txtParam1, "Alpha:", "0");
-					setLabelText(lblParam2, txtParam2, "Beta:", "0.0");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0.0");
-					System.out.println(txtType1);
-					System.out.println(txtType2);
-					System.out.println(txtType3);
-				} else if (j == 1) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = 1;
-					setLabelText(lblParam1, txtParam1, "Median:", "1.0");
-					setLabelText(lblParam2, txtParam2, "Scale:", "1.0");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0.0");
-				} else if (j == 2) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "DegreesOfFreedom:",
-							"5");
-					setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
-							"0.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 3) {
-					txtType1 = 0;
-					txtType2 = -1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Value:", "0");
-					setLabelText(lblParam2, txtParam2, "", "");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 4) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Singletons:", "10");
-					setLabelText(lblParam2, txtParam2, "Probabilities:", "0.5");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 5) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Mean:", "0.0");
-					setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
-							"1.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 6) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "NumeratorDegreesOfFreedom:", "10");
-					setLabelText(lblParam2, txtParam2, "DenumeratorDegreesOfFreedom:", "50");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0");
-				} else if (j == 7) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Shape:", "50");
-					setLabelText(lblParam2, txtParam2, "Scale:", "2");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0");
-				}
-				if (j == 8) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Mu:", "0");
-					setLabelText(lblParam2, txtParam2, "Beta:", "0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 9) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Mu:", "1.0");
-					setLabelText(lblParam2, txtParam2, "Beta:", "1.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 10) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Mu:", "5");
-					setLabelText(lblParam2, txtParam2, "C:", "0.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 11) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Mu:", "0");
-					setLabelText(lblParam2, txtParam2, "S:", "10");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 12) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = 1;
-					setLabelText(lblParam1, txtParam1, "Scale:", "1.0");
-					setLabelText(lblParam2, txtParam2, "Shape:", "0.5");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0.0");
-				} else if (j == 13) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = 1;
-					setLabelText(lblParam1, txtParam1, "Mu:", "0.0");
-					setLabelText(lblParam2, txtParam2, "Omega:", "1.0");
-					setLabelText(lblParam3, txtParam3, "InCumAccuracy:", "0.0");
-				} else if (j == 14) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Mean:", "0");
-					setLabelText(lblParam2, txtParam2, "Sd:", "1");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0");
-				} else if (j == 15) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Scale:", "1");
-					setLabelText(lblParam2, txtParam2, "Shape:", "1");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0");
-				} else if (j == 16) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "DegreesOfFreedom:",
-							"0");
-					setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
-							"0.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 17) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Lower limit:", "10");
-					setLabelText(lblParam2, txtParam2, "Upper limit:", "0.5");
-					setLabelText(lblParam3, txtParam3, "Mode:", "0");
-				} else if (j == 18) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Lower bounds:", "0.0");
-					setLabelText(lblParam2, txtParam2, "Upper bounds:", "1.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 19) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Shape:", "0");
-					setLabelText(lblParam2, txtParam2, "Scale:", "0");
-					setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
-							"0");
-				}
-				return;
+				updateDistributionType();
+			
 			}
 		});
+		cmb3.select(0);
+		updateDistributionType();
+	}
 
+	private void updateDistributionType(){
+		
+		int j = cmb3.getSelectionIndex();
+		if (j == 0) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = 1;
+			setLabelText(lblParam1, txtParam1, "Alpha:", "0");
+			setLabelText(lblParam2, txtParam2, "Beta:", "0.0");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0.0");
+			System.out.println(txtType1);
+			System.out.println(txtType2);
+			System.out.println(txtType3);
+		} else if (j == 1) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = 1;
+			setLabelText(lblParam1, txtParam1, "Median:", "1.0");
+			setLabelText(lblParam2, txtParam2, "Scale:", "1.0");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0.0");
+		} else if (j == 2) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "DegreesOfFreedom:",
+					"5");
+			setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
+					"0.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 3) {
+			txtType1 = 0;
+			txtType2 = -1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Value:", "0");
+			setLabelText(lblParam2, txtParam2, "", "");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 4) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Singletons:", "10");
+			setLabelText(lblParam2, txtParam2, "Probabilities:", "0.5");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 5) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Mean:", "0.0");
+			setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
+					"1.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 6) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "NumeratorDegreesOfFreedom:", "10");
+			setLabelText(lblParam2, txtParam2, "DenumeratorDegreesOfFreedom:", "50");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0");
+		} else if (j == 7) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Shape:", "50");
+			setLabelText(lblParam2, txtParam2, "Scale:", "2");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0");
+		}
+		if (j == 8) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Mu:", "0");
+			setLabelText(lblParam2, txtParam2, "Beta:", "0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 9) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Mu:", "1.0");
+			setLabelText(lblParam2, txtParam2, "Beta:", "1.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 10) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Mu:", "5");
+			setLabelText(lblParam2, txtParam2, "C:", "0.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 11) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Mu:", "0");
+			setLabelText(lblParam2, txtParam2, "S:", "10");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 12) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = 1;
+			setLabelText(lblParam1, txtParam1, "Scale:", "1.0");
+			setLabelText(lblParam2, txtParam2, "Shape:", "0.5");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0.0");
+		} else if (j == 13) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = 1;
+			setLabelText(lblParam1, txtParam1, "Mu:", "0.0");
+			setLabelText(lblParam2, txtParam2, "Omega:", "1.0");
+			setLabelText(lblParam3, txtParam3, "InCumAccuracy:", "0.0");
+		} else if (j == 14) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Mean:", "0");
+			setLabelText(lblParam2, txtParam2, "Sd:", "1");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0");
+		} else if (j == 15) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Scale:", "1");
+			setLabelText(lblParam2, txtParam2, "Shape:", "1");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0");
+		} else if (j == 16) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "DegreesOfFreedom:",
+					"0");
+			setLabelText(lblParam2, txtParam2, "InverseCumAccuracy:",
+					"0.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 17) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Lower limit:", "10");
+			setLabelText(lblParam2, txtParam2, "Upper limit:", "0.5");
+			setLabelText(lblParam3, txtParam3, "Mode:", "0");
+		} else if (j == 18) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Lower bounds:", "0.0");
+			setLabelText(lblParam2, txtParam2, "Upper bounds:", "1.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 19) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Shape:", "0");
+			setLabelText(lblParam2, txtParam2, "Scale:", "0");
+			setLabelText(lblParam3, txtParam3, "InverseCumAccuracy:",
+					"0");
+		}
+		group.layout();
 	}
 	
 	public void addModifyListener(ModifyListener modifyListener) {

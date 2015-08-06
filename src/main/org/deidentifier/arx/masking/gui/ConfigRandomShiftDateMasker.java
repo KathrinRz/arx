@@ -26,7 +26,8 @@ public class ConfigRandomShiftDateMasker {
 	private Label lblPeriod;
 	private Text txtShiftConstant;
 	private Text txtPeriod;
-	private Button btn1;
+	private Button btnCancel;
+	private Button btnOK;
 
 	/**
 	 * Methode, die ein Coposite erzeugt, in dem zwei Eigabefelder und eine neue
@@ -90,20 +91,22 @@ public class ConfigRandomShiftDateMasker {
 			}
 		});
 
-		btn1 = new Button(group, SWT.NONE);
-		btn1.setText("OK");
+		btnCancel = new Button (group, SWT.PUSH);
+		btnCancel.setText("Cancel");
+		gridData = new GridData (GridData.FILL, GridData.END,true,true);
+		
+		btnCancel.setLayoutData(gridData);
+		btnOK = new Button(group, SWT.PUSH);
+		btnOK.setText("OK");
 		gridData = new GridData(GridData.FILL, GridData.END, true, true);
-		gridData.horizontalSpan = 2;
-		btn1.setLayoutData(gridData);
+		btnOK.setLayoutData(gridData);
 		
 		checkShiftConstant();
 		checkDiscreteDistribution();
 		checkPeriod();
 		checkOK();
 	}
-	/**
-	 * Methode, die Eingabe für Distribution auf Gültigkeit überprüft
-	 */
+	
 	private void checkDiscreteDistribution() {
 		okDiscreteDistribution = disc1.getOK();
 //		if(okDiscreteDistribution){
@@ -112,21 +115,17 @@ public class ConfigRandomShiftDateMasker {
 //			disc1.setForeground(disc1.getDisplay().getSystemColor(SWT.COLOR_RED));
 //		}
 	}
-	/**
-	 * Methode, die den OK-Button je nach Eingabe richtig/falsch enabled oder disabled
-	 */
+
 	private void checkOK() {
 		if (okShiftConstant && okDiscreteDistribution&&okPeriod) {
-			btn1.setText("OK");
-			btn1.setEnabled(true);
+			btnOK.setText("OK");
+			btnOK.setEnabled(true);
 		} else {
-			btn1.setText("Not OK");
-			btn1.setEnabled(false);
+			btnOK.setText("OK");
+			btnOK.setEnabled(false);
 		}
 	}
-	/**
-	 * Methode, die Eingabe für Period auf Gültigkeit überprüft
-	 */
+
 	private void checkPeriod() {
 		okPeriod = RegEx.regExPeriod(txtPeriod.getText());
 		if(okPeriod){
@@ -135,9 +134,7 @@ public class ConfigRandomShiftDateMasker {
 			txtPeriod.setForeground(txtPeriod.getDisplay().getSystemColor(SWT.COLOR_RED));
 		}
 	}
-	/**
-	 * Methode, die Eingabe für ShiftConstant auf Gültigkeit überprüft
-	 */
+
 	private void checkShiftConstant() {
 		okShiftConstant = RegEx.regExInt(txtShiftConstant.getText());
 		if(okShiftConstant){

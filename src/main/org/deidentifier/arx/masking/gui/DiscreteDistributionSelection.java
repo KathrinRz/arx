@@ -61,6 +61,7 @@ public class DiscreteDistributionSelection extends Composite {
 		gridData = new GridData();
 		gridData.horizontalSpan = 2;
 		cmb2.setLayoutData(gridData);
+		cmb2.select(-1);
 
 		lblParam1 = new Label(group, SWT.NONE);
 		gridData = new GridData(GridData.BEGINNING, GridData.FILL, true, false);
@@ -97,85 +98,12 @@ public class DiscreteDistributionSelection extends Composite {
 		 */
 		cmb2.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				int j = cmb2.getSelectionIndex();
-				if (j == 0) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Number of trials:",
-							"0");
-					setLabelText(lblParam2, txtParam2,
-							"Probability of success:", "0.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-
-				} else if (j == 1) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1,
-							"Probability mass function:", "1.0");
-					setLabelText(lblParam2, txtParam2,
-							"Probability mass function:", "2.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 2) {
-					txtType1 = 0;
-					txtType2 = -1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1,
-							"Probability of success:", "50");
-					setLabelText(lblParam2, txtParam2, "", "");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 3) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Population size:",
-							"500");
-					setLabelText(lblParam2, txtParam2,
-							"Number of successes in population:", "150");
-					setLabelText(lblParam3, txtParam3, "Sample size:", "250");
-
-				} else if (j == 4) {
-					txtType1 = 0;
-					txtType2 = 1;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Number of successes:",
-							"0");
-					setLabelText(lblParam2, txtParam2,
-							"Probability of success:", "0.0");
-					setLabelText(lblParam3, txtParam3, "", "");
-
-				} else if (j == 5) {
-					txtType1 = 1;
-					txtType2 = 1;
-					txtType3 = 0;
-					setLabelText(lblParam1, txtParam1, "Mean:", "0.0");
-					setLabelText(lblParam2, txtParam2, "Convergence:", "1.0");
-					setLabelText(lblParam3, txtParam3,
-							"Max Number of iterations:", "50");
-
-				} else if (j == 6) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = -1;
-
-					setLabelText(lblParam1, txtParam1, "Lower bounds:", "10");
-					setLabelText(lblParam2, txtParam2, "Upper bounds:", "50");
-					setLabelText(lblParam3, txtParam3, "", "");
-				} else if (j == 7) {
-					txtType1 = 0;
-					txtType2 = 0;
-					txtType3 = -1;
-					setLabelText(lblParam1, txtParam1, "Number of elements:",
-							"50");
-					setLabelText(lblParam2, txtParam2, "Exponent:", "2");
-					setLabelText(lblParam3, txtParam3, "", "");
-
-				}
-				return;
+				updateDistributionType();
 			}
-		});
+			});
 
+		cmb2.select(0);
+		updateDistributionType();
 	}
 
 	public void addModifyListener(ModifyListener modifyListener) {
@@ -243,6 +171,85 @@ public class DiscreteDistributionSelection extends Composite {
 	 * Textfeld der richtige RegEx aufgerufen(int=0,double=1)
 	 */
 
+	private void updateDistributionType(){
+		int j = cmb2.getSelectionIndex();
+		if (j == 0) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Number of trials:",
+					"0");
+			setLabelText(lblParam2, txtParam2,
+					"Probability of success:", "0.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+
+		} else if (j == 1) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1,
+					"Probability mass function:", "1.0");
+			setLabelText(lblParam2, txtParam2,
+					"Probability mass function:", "2.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 2) {
+			txtType1 = 0;
+			txtType2 = -1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1,
+					"Probability of success:", "50");
+			setLabelText(lblParam2, txtParam2, "", "");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 3) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Population size:",
+					"500");
+			setLabelText(lblParam2, txtParam2,
+					"Number of successes in population:", "150");
+			setLabelText(lblParam3, txtParam3, "Sample size:", "250");
+
+		} else if (j == 4) {
+			txtType1 = 0;
+			txtType2 = 1;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Number of successes:",
+					"0");
+			setLabelText(lblParam2, txtParam2,
+					"Probability of success:", "0.0");
+			setLabelText(lblParam3, txtParam3, "", "");
+
+		} else if (j == 5) {
+			txtType1 = 1;
+			txtType2 = 1;
+			txtType3 = 0;
+			setLabelText(lblParam1, txtParam1, "Mean:", "0.0");
+			setLabelText(lblParam2, txtParam2, "Convergence:", "1.0");
+			setLabelText(lblParam3, txtParam3,
+					"Max Number of iterations:", "50");
+
+		} else if (j == 6) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = -1;
+
+			setLabelText(lblParam1, txtParam1, "Lower bounds:", "10");
+			setLabelText(lblParam2, txtParam2, "Upper bounds:", "50");
+			setLabelText(lblParam3, txtParam3, "", "");
+		} else if (j == 7) {
+			txtType1 = 0;
+			txtType2 = 0;
+			txtType3 = -1;
+			setLabelText(lblParam1, txtParam1, "Number of elements:",
+					"50");
+			setLabelText(lblParam2, txtParam2, "Exponent:", "2");
+			setLabelText(lblParam3, txtParam3, "", "");
+
+		}
+		group.layout();		
+	}
+	
 	public void setLabelText(Label lbl1, final Text txt1, String lab1,
 			String val1) {
 		GridData gridData = new GridData();
